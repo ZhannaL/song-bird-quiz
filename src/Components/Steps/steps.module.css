@@ -9,6 +9,10 @@
 .step {
   padding: var(--space-s) var(--space-l);
   border-radius: 0;
+  flex-grow: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .first {

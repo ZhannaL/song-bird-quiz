@@ -5,34 +5,29 @@ import {
   ThemeProvider,
 } from '@material-ui/core';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import style from './App.module.css';
-import { Header } from './Components/Header';
-import { Score } from './Components/Score';
-import { Steps } from './Components/Steps';
-import { stepsArray } from './birdsData';
+import { Provider } from 'react-redux';
+import { store } from './Reducers/Store';
+import AppContent from './AppContent';
 
 const theme = createMuiTheme({
   palette: {
     type: 'dark',
     primary: {
-      main: '#21ba45',
-      dark: '#035617',
+      main: '#00b5ad',
     },
   },
 });
 
 const App = (): JSX.Element => {
   return (
-    <StylesProvider injectFirst>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <div className={style.App}>
-          <Header title="SongBird" />
-          <Score />
-          <Steps activeStep={2} steps={stepsArray} />
-        </div>
-      </ThemeProvider>
-    </StylesProvider>
+    <Provider store={store}>
+      <StylesProvider injectFirst>
+        <ThemeProvider theme={theme}>
+          <CssBaseline />
+          <AppContent />
+        </ThemeProvider>
+      </StylesProvider>
+    </Provider>
   );
 };
 

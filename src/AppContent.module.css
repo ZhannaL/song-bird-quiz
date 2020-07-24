@@ -1,0 +1,19 @@
+@import '~styles/spacing.css';
+
+.header {
+  padding: 0 var(--space-s);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+}
+
+.mainContent {
+  display: grid;
+  grid-template-areas:
+    '. steps steps steps .'
+    '. . . . . '
+    '. nextStepButton nextStepButton nextStepButton .';
+
+  grid-template-rows: auto 5px auto;
+  grid-template-columns: 30px 1fr 1fr 1fr 30px;
+}
