@@ -1,0 +1,8 @@
+.score {
+  grid-area: score;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-style: italic;
+}

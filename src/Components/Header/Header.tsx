@@ -5,7 +5,12 @@ import style from './header.module.css';
 const Header = ({ title }: { title: string }): JSX.Element => {
   return (
     <header className={style.logo}>
-      <Typography color="primary" variant="h1" gutterBottom>
+      <Typography
+        color="primary"
+        variant="h1"
+        gutterBottom
+        className={style.logoText}
+      >
         {title}
       </Typography>
     </header>
