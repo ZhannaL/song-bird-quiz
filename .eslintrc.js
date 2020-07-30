@@ -22,6 +22,11 @@ module.exports = {
       },
     ],
     'react/jsx-filename-extension': [1, { extensions: ['.tsx'] }],
+    'react-hooks/rules-of-hooks': 'error',
+    'react-hooks/exhaustive-deps': [
+      'error',
+      { enableDangerousAutofixThisMayCauseInfiniteLoops: true },
+    ],
   },
   parser: '@typescript-eslint/parser',
   plugins: ['prettier', 'react-hooks', '@typescript-eslint'],

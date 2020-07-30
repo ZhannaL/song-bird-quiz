@@ -1,0 +1,26 @@
+.mainBlock {
+  grid-area: mainBlock;
+
+  display: flex;
+  align-items: center;
+  padding: 16px;
+}
+
+.imgWrapp {
+  display: flex;
+  align-items: center;
+}
+
+.img {
+  width: 200px;
+  height: 155px;
+  border-radius: 10px;
+}
+
+.birdName {
+  padding-left: 10px;
+}
+
+.audio {
+  flex-grow: 1;
+}

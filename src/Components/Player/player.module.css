@@ -1,0 +1,13 @@
+.audioBlock {
+  display: flex;
+  align-items: center;
+}
+
+.audioDuration {
+  padding: 0 10px;
+  margin: 0;
+}
+
+.button {
+  padding: 10px;
+}

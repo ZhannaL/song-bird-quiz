@@ -27,6 +27,7 @@ const Steps = ({ steps, activeStep }: Props): JSX.Element => {
     <div className={style.steps}>
       {steps.map((el, ind) => (
         <Paper
+          key={el}
           className={classnames(
             style.step,
             activeStep === ind ? classes.active : '',
