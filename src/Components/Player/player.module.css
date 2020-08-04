@@ -6,8 +6,10 @@
 .audioDuration {
   padding: 0 10px;
   margin: 0;
+  margin-left: 20px;
 }
 
 .button {
   padding: 10px;
+  margin-right: 20px;
 }

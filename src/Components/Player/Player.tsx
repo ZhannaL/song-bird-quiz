@@ -10,27 +10,31 @@ type Props = {
 };
 
 const Player = ({ audio }: Props): JSX.Element => {
-  const playSound = new Audio(audio);
-  const [playAudio] = useState(playSound);
+  const [playAudio, setPlayAudio] = useState<HTMLAudioElement>(
+    new Audio(audio)
+  );
   const [isPaused, setIsPaused] = useState(true);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
   // console.dir(currentTime);
   useEffect(() => {
+    const playSound = new Audio(audio);
     const handlerEnded = () => setIsPaused(true);
-    const handlerDuration = () => setDuration(playAudio.duration);
-    const handlerCurrentTime = () => setCurrentTime(playAudio.currentTime);
-
-    playAudio.addEventListener('ended', handlerEnded);
-    playAudio.addEventListener('loadedmetadata', handlerDuration);
-    playAudio.addEventListener('timeupdate', handlerCurrentTime);
-
+    const handlerDuration = () => setDuration(playSound.duration);
+    const handlerCurrentTime = () => setCurrentTime(playSound.currentTime);
+    playSound.addEventListener('ended', handlerEnded);
+    playSound.addEventListener('loadedmetadata', handlerDuration);
+    playSound.addEventListener('timeupdate', handlerCurrentTime);
+    setPlayAudio(playSound);
+    setCurrentTime(0);
     return () => {
-      playAudio.removeEventListener('ended', handlerEnded);
-      playAudio.removeEventListener('loadedmetadata', handlerDuration);
-      playAudio.removeEventListener('timeupdate', handlerCurrentTime);
+      playSound.pause();
+      setIsPaused(true);
+      playSound.removeEventListener('ended', handlerEnded);
+      playSound.removeEventListener('loadedmetadata', handlerDuration);
+      playSound.removeEventListener('timeupdate', handlerCurrentTime);
     };
-  }, [playAudio]);
+  }, [audio]);
 
   return (
     <div className={style.audioBlock}>

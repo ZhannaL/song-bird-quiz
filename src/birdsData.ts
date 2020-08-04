@@ -1,11 +1,21 @@
 export const stepsArray = [
   'General',
   'Passeridae',
-  'Forest',
+  'Forestbirds',
   'Songbirds',
   'Predators',
   'Seabirds',
 ];
+
+export type BirdData = {
+  id: number;
+  name: string;
+  species: string;
+  link: string;
+  description: string;
+  image: string;
+  audio: string;
+};
 
 export const birdsData = [
   [
@@ -389,7 +399,8 @@ export const birdsData = [
       link: 'https://en.wikipedia.org/wiki/Pelican',
       description:
         'Pelicans frequent inland and coastal waters, where they feed principally on fish, catching them at or near the water surface. They are gregarious birds, travelling in flocks, hunting cooperatively, and breeding colonially.',
-      image: 'https://live.staticflickr.com/7885/46523771945_9496c2a191.jpg',
+      image:
+        'https://image.shutterstock.com/image-photo/great-white-eastern-pelican-rosy-600w-688823338.jpg',
       audio:
         'https://www.xeno-canto.org/sounds/uploaded/XAMHIHFTZG/XC331138-call1.mp3',
     },

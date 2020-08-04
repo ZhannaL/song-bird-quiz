@@ -1,5 +1,5 @@
 import React from 'react';
-import { Paper, Typography } from '@material-ui/core';
+import { Paper, Typography, Divider } from '@material-ui/core';
 import { Player } from '../Player';
 import style from './mainBlock.module.css';
 
@@ -24,6 +24,7 @@ const MainBlock = ({ audio, image, name }: Props): JSX.Element => {
         >
           {name}
         </Typography>
+        <Divider />
         <Player audio={audio} />
       </div>
     </Paper>

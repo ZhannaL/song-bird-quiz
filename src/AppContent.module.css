@@ -14,8 +14,10 @@
     '. . . . . '
     '. mainBlock mainBlock mainBlock . '
     '. . . . . '
+    '. options . description .'
+    '. . . . . '
     '. nextStepButton nextStepButton nextStepButton .';
 
-  grid-template-rows: auto 5px auto 5px auto;
-  grid-template-columns: 30px 1fr 1fr 1fr 30px;
+  grid-template-rows: auto 20px auto 20px 300px 20px auto;
+  grid-template-columns: 30px 1fr 20px 1fr 30px;
 }

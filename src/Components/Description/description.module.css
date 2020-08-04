@@ -1,6 +1,10 @@
-.mainBlock {
-  grid-area: mainBlock;
+.description {
+  grid-area: description;
 
+  padding: 8px;
+}
+
+.head {
   display: flex;
   align-items: center;
   padding: 16px;
@@ -12,16 +16,21 @@
 }
 
 .img {
-  width: 200px;
-  height: 155px;
+  width: 150px;
+  height: 100px;
   border-radius: 10px;
 }
 
-.birdName {
+.birdName,
+.species {
   padding-left: 10px;
+}
+
+.species {
+  margin: 0;
 }
 
 .audio {
   flex-grow: 1;
-  padding: 0 30px;
+  padding: 0 10px;
 }

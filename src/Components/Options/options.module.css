@@ -1,0 +1,13 @@
+.options {
+  grid-area: options;
+
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-around;
+}
+
+.option {
+  padding: 10px 30px;
+  font-weight: bold;
+}
