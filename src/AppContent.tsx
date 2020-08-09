@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Finish } from 'Components/Finish';
 import { Description } from 'Components/Description';
@@ -9,11 +9,35 @@ import { Steps } from 'Components/Steps';
 import { NextStepButton } from 'Components/NextStepButton';
 import { State } from 'Reducers/rootReducer';
 import { Options } from 'Components/Options';
+import { useUpdateScore } from 'Reducers/Score/scoreActions';
 import { stepsArray, birdsData } from './birdsData';
 import style from './AppContent.module.css';
 
 const AppContent = (): JSX.Element => {
   const currentStep = useSelector((state: State) => state.step);
+  const [birdIndexDescription, setBirdIndexDescription] = useState<
+    number | null
+  >(null);
+  const [answer, setAnswer] = useState(
+    Math.floor(Math.random() * stepsArray.length)
+  );
+  const [isAnswerCorrect, setIsAnswerCorrect] = useState(false);
+
+  const updateScore = useUpdateScore();
+  const score = useSelector((state: State) => state.score);
+  const [currentScore, setCurrentScore] = useState(5);
+
+  const checkAnswer = (index: number) => {
+    if (index === answer) {
+      setIsAnswerCorrect(true);
+      updateScore(score + currentScore);
+      setCurrentScore(5);
+    } else {
+      setCurrentScore(currentScore - 1);
+    }
+    setBirdIndexDescription(index);
+  };
+
   return (
     <div className={style.App}>
       <header className={style.header}>
@@ -28,13 +52,35 @@ const AppContent = (): JSX.Element => {
         ) : (
           <>
             <MainBlock
-              name={birdsData[currentStep][3].name}
-              audio={birdsData[currentStep][3].audio}
-              image={birdsData[currentStep][3].image}
+              isAnswerCorrect={isAnswerCorrect}
+              name={birdsData[currentStep][answer].name}
+              audio={birdsData[currentStep][answer].audio}
+              image={birdsData[currentStep][answer].image}
             />
-            <Options options={birdsData[currentStep]} />
-            <Description data={birdsData[currentStep][3]} />
-            <NextStepButton isEnabled allSteps={stepsArray.length} />
+            <Options
+              options={birdsData[currentStep]}
+              onOptionSelected={(index) => {
+                checkAnswer(index);
+              }}
+              answer={answer}
+              isAnswerCorrect={isAnswerCorrect}
+            />
+            <Description
+              data={
+                birdIndexDescription === null
+                  ? birdIndexDescription
+                  : birdsData[currentStep][birdIndexDescription]
+              }
+            />
+            <NextStepButton
+              isEnabled={isAnswerCorrect}
+              allSteps={stepsArray.length}
+              onSetAnswer={() => {
+                setAnswer(Math.floor(Math.random() * stepsArray.length));
+                setBirdIndexDescription(null);
+                setIsAnswerCorrect(false);
+              }}
+            />
           </>
         )}
       </div>

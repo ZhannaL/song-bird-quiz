@@ -17,6 +17,8 @@ export type BirdData = {
   audio: string;
 };
 
+export type AnswerType = 'unanswered' | 'wrong' | 'correct';
+
 export const birdsData = [
   [
     {

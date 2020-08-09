@@ -1,5 +1,6 @@
 import React from 'react';
 import { Paper, Typography, Divider } from '@material-ui/core';
+import unknown from 'styles/images/quiz-unknown.png';
 import { Player } from '../Player';
 import style from './mainBlock.module.css';
 
@@ -7,13 +8,23 @@ type Props = {
   audio: string;
   image: string;
   name: string;
+  isAnswerCorrect: boolean;
 };
 
-const MainBlock = ({ audio, image, name }: Props): JSX.Element => {
+const MainBlock = ({
+  audio,
+  image,
+  name,
+  isAnswerCorrect,
+}: Props): JSX.Element => {
   return (
     <Paper className={style.mainBlock}>
       <div className={style.imgWrapp}>
-        <img src={image} alt="bird" className={style.img} />
+        <img
+          src={isAnswerCorrect ? image : unknown}
+          alt="bird"
+          className={style.img}
+        />
       </div>
       <div className={style.audio}>
         <Typography
@@ -22,7 +33,7 @@ const MainBlock = ({ audio, image, name }: Props): JSX.Element => {
           gutterBottom
           className={style.birdName}
         >
-          {name}
+          {isAnswerCorrect ? name : '******'}
         </Typography>
         <Divider />
         <Player audio={audio} />

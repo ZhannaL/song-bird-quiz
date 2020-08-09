@@ -16,7 +16,6 @@ const Player = ({ audio }: Props): JSX.Element => {
   const [isPaused, setIsPaused] = useState(true);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
-  // console.dir(currentTime);
   useEffect(() => {
     const playSound = new Audio(audio);
     const handlerEnded = () => setIsPaused(true);

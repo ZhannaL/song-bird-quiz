@@ -8,9 +8,14 @@ import { State } from '../../Reducers/rootReducer';
 type Props = {
   isEnabled: boolean;
   allSteps: number;
+  onSetAnswer: () => unknown;
 };
 
-const NextStepButton = ({ isEnabled, allSteps }: Props): JSX.Element => {
+const NextStepButton = ({
+  isEnabled,
+  allSteps,
+  onSetAnswer,
+}: Props): JSX.Element => {
   const updateStep = useUpdateStep();
   const currentStep = useSelector((state: State) => state.step);
   return (
@@ -19,7 +24,10 @@ const NextStepButton = ({ isEnabled, allSteps }: Props): JSX.Element => {
       disabled={!isEnabled}
       color="primary"
       className={style.nextStepButton}
-      onClick={() => updateStep(allSteps > currentStep ? currentStep + 1 : 0)}
+      onClick={() => {
+        updateStep(allSteps > currentStep ? currentStep + 1 : 0);
+        onSetAnswer();
+      }}
     >
       Next Step
     </Button>
