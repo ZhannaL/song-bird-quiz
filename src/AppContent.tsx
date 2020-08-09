@@ -1,15 +1,16 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Description } from './Components/Description';
-import { MainBlock } from './Components/MainBlock';
-import style from './AppContent.module.css';
-import { Header } from './Components/Header';
-import { Score } from './Components/Score';
-import { Steps } from './Components/Steps';
+import { Finish } from 'Components/Finish';
+import { Description } from 'Components/Description';
+import { MainBlock } from 'Components/MainBlock';
+import { Header } from 'Components/Header';
+import { Score } from 'Components/Score';
+import { Steps } from 'Components/Steps';
+import { NextStepButton } from 'Components/NextStepButton';
+import { State } from 'Reducers/rootReducer';
+import { Options } from 'Components/Options';
 import { stepsArray, birdsData } from './birdsData';
-import { NextStepButton } from './Components/NextStepButton';
-import { State } from './Reducers/rootReducer';
-import { Options } from './Components/Options';
+import style from './AppContent.module.css';
 
 const AppContent = (): JSX.Element => {
   const currentStep = useSelector((state: State) => state.step);
@@ -23,7 +24,7 @@ const AppContent = (): JSX.Element => {
       <div className={style.mainContent}>
         <Steps activeStep={currentStep} steps={stepsArray} />
         {currentStep === birdsData.length ? (
-          <div> congrats </div>
+          <Finish />
         ) : (
           <>
             <MainBlock
@@ -33,9 +34,9 @@ const AppContent = (): JSX.Element => {
             />
             <Options options={birdsData[currentStep]} />
             <Description data={birdsData[currentStep][3]} />
+            <NextStepButton isEnabled allSteps={stepsArray.length} />
           </>
         )}
-        <NextStepButton isEnabled allSteps={stepsArray.length} />
       </div>
     </div>
   );

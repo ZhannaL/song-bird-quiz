@@ -30,4 +30,11 @@ module.exports = {
   },
   parser: '@typescript-eslint/parser',
   plugins: ['prettier', 'react-hooks', '@typescript-eslint'],
+  settings: {
+    'import/resolver': {
+      node: {
+        paths: ['src'],
+      },
+    },
+  },
 };
