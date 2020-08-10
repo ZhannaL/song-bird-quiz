@@ -39,22 +39,12 @@ const Description = ({ data }: Props): JSX.Element => {
               <Player audio={data.audio} />
             </div>
           </div>
-          <Typography
-            color="inherit"
-            variant="body2"
-            gutterBottom
-            className={style.description}
-          >
+          <Typography color="inherit" variant="body2" gutterBottom>
             {data.description}
           </Typography>
         </>
       ) : (
-        <Typography
-          color="inherit"
-          variant="body2"
-          gutterBottom
-          className={style.description}
-        >
+        <Typography color="inherit" variant="body2" gutterBottom>
           make your choice
         </Typography>
       )}

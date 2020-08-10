@@ -1,14 +1,16 @@
+@import '~styles/spacing.css';
+
 .description {
   grid-area: description;
 
-  padding: 8px;
-  height: 300px;
+  padding: var(--space-s) var(--space-m);
+  height: 310px;
 }
 
 .head {
   display: flex;
   align-items: center;
-  padding: 16px;
+  padding: 0 var(--space-s);
 }
 
 .imgWrapp {
@@ -24,7 +26,7 @@
 
 .birdName,
 .species {
-  padding-left: 10px;
+  padding-left: var(--space-m);
 }
 
 .species {
@@ -33,5 +35,5 @@
 
 .audio {
   flex-grow: 1;
-  padding: 0 10px;
+  padding: 0 var(--space-m);
 }

@@ -16,16 +16,20 @@ const Player = ({ audio }: Props): JSX.Element => {
   const [isPaused, setIsPaused] = useState(true);
   const [duration, setDuration] = useState(0);
   const [currentTime, setCurrentTime] = useState(0);
+
   useEffect(() => {
     const playSound = new Audio(audio);
     const handlerEnded = () => setIsPaused(true);
     const handlerDuration = () => setDuration(playSound.duration);
     const handlerCurrentTime = () => setCurrentTime(playSound.currentTime);
+
     playSound.addEventListener('ended', handlerEnded);
     playSound.addEventListener('loadedmetadata', handlerDuration);
     playSound.addEventListener('timeupdate', handlerCurrentTime);
+
     setPlayAudio(playSound);
     setCurrentTime(0);
+
     return () => {
       playSound.pause();
       setIsPaused(true);

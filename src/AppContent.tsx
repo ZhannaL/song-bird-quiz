@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
-import { Finish } from 'Components/Finish';
-import { Description } from 'Components/Description';
-import { MainBlock } from 'Components/MainBlock';
-import { Header } from 'Components/Header';
-import { Score } from 'Components/Score';
-import { Steps } from 'Components/Steps';
-import { NextStepButton } from 'Components/NextStepButton';
+import {
+  Finish,
+  Description,
+  MainBlock,
+  Header,
+  Score,
+  Steps,
+  NextStepButton,
+} from 'Components';
 import { State } from 'Reducers/rootReducer';
 import { Options } from 'Components/Options';
 import { useUpdateScore } from 'Reducers/Score/scoreActions';

@@ -1,3 +1,5 @@
+@import '~styles/spacing.css';
+
 .finish {
   grid-area: finish;
 
@@ -6,7 +8,7 @@
   align-items: center;
   justify-content: center;
 
-  padding: 32px 16px;
+  padding: var(--space-l) var(--space-xl);
   margin: 20px 0;
 }
 
