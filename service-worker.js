@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/song-bird-quiz/precache-manifest.c9efb426643535553fc96f8bba5b98f2.js"
+  "/song-bird-quiz/precache-manifest.b18f88dbf1f07cccf1ad99359196ad52.js"
 );
 
 self.addEventListener('message', (event) => {
