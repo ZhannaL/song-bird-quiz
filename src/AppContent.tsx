@@ -12,6 +12,7 @@ import {
 import { State } from 'Reducers/rootReducer';
 import { Options } from 'Components/Options';
 import { useUpdateScore } from 'Reducers/Score/scoreActions';
+import { useWindowSize } from 'hooks/WindowSizeContext';
 import { stepsArray, birdsData } from './birdsData';
 import style from './AppContent.module.css';
 
@@ -40,6 +41,8 @@ const AppContent = (): JSX.Element => {
     setBirdIndexDescription(index);
   };
 
+  const screenSize = useWindowSize();
+
   return (
     <div className={style.App}>
       <header className={style.header}>
@@ -48,11 +51,20 @@ const AppContent = (): JSX.Element => {
       </header>
 
       <div className={style.mainContent}>
-        <Steps activeStep={currentStep} steps={stepsArray} />
         {currentStep === birdsData.length ? (
           <Finish />
         ) : (
           <>
+            <Steps
+              activeStep={currentStep}
+              steps={stepsArray}
+              onSetAnswer={() => {
+                setAnswer(Math.floor(Math.random() * stepsArray.length));
+                setBirdIndexDescription(null);
+                setIsAnswerCorrect(false);
+              }}
+              isAnswerCorrect={isAnswerCorrect}
+            />
             <MainBlock
               isAnswerCorrect={isAnswerCorrect}
               name={birdsData[currentStep][answer].name}
@@ -74,15 +86,17 @@ const AppContent = (): JSX.Element => {
                   : birdsData[currentStep][birdIndexDescription]
               }
             />
-            <NextStepButton
-              isEnabled={isAnswerCorrect}
-              allSteps={stepsArray.length}
-              onSetAnswer={() => {
-                setAnswer(Math.floor(Math.random() * stepsArray.length));
-                setBirdIndexDescription(null);
-                setIsAnswerCorrect(false);
-              }}
-            />
+            {screenSize.width >= 600 ? (
+              <NextStepButton
+                isEnabled={isAnswerCorrect}
+                allSteps={stepsArray.length}
+                onSetAnswer={() => {
+                  setAnswer(Math.floor(Math.random() * stepsArray.length));
+                  setBirdIndexDescription(null);
+                  setIsAnswerCorrect(false);
+                }}
+              />
+            ) : null}
           </>
         )}
       </div>

@@ -46,4 +46,18 @@
   .header {
     flex-direction: column;
   }
+
+  .mainContent {
+    grid-template-areas:
+      '. steps steps steps .'
+      '. . . . . '
+      '. mainBlock mainBlock mainBlock . '
+      '. . . . . '
+      '. options options options .'
+      '. . . . . '
+      '. description description description .'
+      '. finish finish finish . '
+      '. finish finish finish . '
+      '. finish finish finish . ';
+  }
 }

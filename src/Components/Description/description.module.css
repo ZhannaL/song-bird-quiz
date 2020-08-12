@@ -40,6 +40,6 @@
 
 @media only screen and (max-width: 860px) {
   .description {
-    margin-bottom: 20px;
+    margin: 20px 0;
   }
 }

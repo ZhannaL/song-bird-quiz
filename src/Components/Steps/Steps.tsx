@@ -6,18 +6,29 @@ import {
   StepLabel,
   Typography,
   MobileStepper,
+  Button,
 } from '@material-ui/core';
+import KeyboardArrowRight from '@material-ui/icons/KeyboardArrowRight';
+
 import { useWindowSize } from 'hooks/WindowSizeContext';
+import { useUpdateStep } from 'Reducers/Step/stepActions';
 import style from './steps.module.css';
 
 type Props = {
   steps: ReadonlyArray<string>;
   activeStep: number;
+  onSetAnswer: () => unknown;
+  isAnswerCorrect: boolean;
 };
 
-const Steps = ({ steps, activeStep }: Props): JSX.Element => {
+const Steps = ({
+  steps,
+  activeStep,
+  onSetAnswer,
+  isAnswerCorrect,
+}: Props): JSX.Element => {
   const screenSize = useWindowSize();
-
+  const updateStep = useUpdateStep();
   return (
     <Paper className={style.steps}>
       {screenSize.width >= 600 ? (
@@ -42,8 +53,27 @@ const Steps = ({ steps, activeStep }: Props): JSX.Element => {
             position="static"
             variant="text"
             activeStep={activeStep}
-            nextButton={<></>}
-            backButton={<></>}
+            nextButton={
+              <Button
+                variant="contained"
+                color="primary"
+                size="small"
+                onClick={() => {
+                  updateStep(steps.length > activeStep ? activeStep + 1 : 0);
+                  onSetAnswer();
+                }}
+                disabled={!isAnswerCorrect}
+              >
+                Next
+                <KeyboardArrowRight />
+              </Button>
+            }
+            backButton={
+              <Button size="small" disabled className={style.leftButton}>
+                Back
+                <KeyboardArrowRight />
+              </Button>
+            }
           />
         </>
       )}

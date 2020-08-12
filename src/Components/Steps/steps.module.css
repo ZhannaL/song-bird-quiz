@@ -19,6 +19,9 @@
 
   .mobileStepper {
     width: 100%;
-    justify-content: center;
+  }
+
+  .leftButton {
+    opacity: 0;
   }
 }
