@@ -28,3 +28,27 @@
   flex-grow: 1;
   padding: 0 var(--space-l);
 }
+
+@media only screen and (max-width: 600px) {
+  .audio {
+    width: 100%;
+    padding: var(--space-xs);
+  }
+
+  .img {
+    width: 100px;
+    height: 70px;
+  }
+
+  .head {
+    display: flex;
+    align-items: flex-end;
+    justify-content: space-around;
+    width: 100%;
+  }
+
+  .mainBlock {
+    flex-direction: column;
+    padding: var(--space-xs);
+  }
+}

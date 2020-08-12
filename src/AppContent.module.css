@@ -21,5 +21,29 @@
     '. . . . . '
     '. nextStepButton nextStepButton nextStepButton .';
 
-  grid-template-columns: 30px 1fr 20px 1fr 30px;
+  grid-template-columns: 30px 1fr 20px 2fr 30px;
+}
+
+@media only screen and (max-width: 860px) {
+  .mainContent {
+    grid-template-areas:
+      '. steps steps steps .'
+      '. . . . . '
+      '. mainBlock mainBlock mainBlock . '
+      '. . . . . '
+      '. options options options .'
+      '. . . . . '
+      '. nextStepButton nextStepButton nextStepButton .'
+      '. . . . . '
+      '. description description description .'
+      '. finish finish finish . '
+      '. finish finish finish . '
+      '. finish finish finish . ';
+  }
+}
+
+@media only screen and (max-width: 600px) {
+  .header {
+    flex-direction: column;
+  }
 }

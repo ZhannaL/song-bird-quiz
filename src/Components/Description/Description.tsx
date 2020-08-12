@@ -45,7 +45,7 @@ const Description = ({ data }: Props): JSX.Element => {
         </>
       ) : (
         <Typography color="inherit" variant="body2" gutterBottom>
-          make your choice
+          listen to audio and make your choice
         </Typography>
       )}
     </Paper>

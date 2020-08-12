@@ -4,7 +4,7 @@
   grid-area: description;
 
   padding: var(--space-s) var(--space-m);
-  height: 310px;
+  min-height: 310px;
 }
 
 .head {
@@ -36,4 +36,10 @@
 .audio {
   flex-grow: 1;
   padding: 0 var(--space-m);
+}
+
+@media only screen and (max-width: 860px) {
+  .description {
+    margin-bottom: 20px;
+  }
 }
